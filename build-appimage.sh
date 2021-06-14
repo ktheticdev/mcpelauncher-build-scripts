@@ -99,6 +99,8 @@ cd ../..
 # Build the game launcher.
 status "==> Building the game launcher..."
 cd mcpelauncher
+wget https://gist.githubusercontent.com/kanafutile/d77b5b89ff2c2aa32c77fa57e12bfc1f/raw/e7a2e06ee7eb56ca9b5649a880e509051f63ea10/eglut_from_mesa_demos.patch
+patch eglut/src/eglut.c eglut_from_mesa_demos.patch
 mkdir build && cd build
 CC=clang CXX=clang++ CFLAGS='-O3' CXXFLAGS='-O3' cmake -DMSA_DAEMON_PATH=. -DXAL_WEBVIEW_QT_PATH=. -DENABLE_QT_ERROR_UI=OFF -DJNI_USE_JNIVM=ON $cmake_options ..
 ninja
